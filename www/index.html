@@ -1,0 +1,186 @@
+<!Doctype html>
+<html>
+<head>
+	<title> Welcome Page </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="js/jquery.mobile-1.4.5.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.js"></script>
+	<script src="cordova.js"></script>
+</head>
+
+<script> 
+$(document).on("pagecreate","#pageres",function(){
+	var fn = parseInt(document.querySelector('#fnum').value);
+	var sn = parseInt(document.querySelector('#snum').value);
+	var ope =document.querySelector('#sym').value;
+
+
+		if(ope ==='plus'){
+			document.querySelector('#opera').value = fn+" + "+sn;
+		    document.querySelector('#resultx').value = fn + sn;
+			
+		}else
+		if(ope ==='minus'){
+			document.querySelector('#opera').value = fn+" - "+sn;
+			document.querySelector('#resultx').value = fn - sn;
+		}else
+		if(ope ==='mult'){
+			document.querySelector('#opera').value = fn+" x "+sn;
+			document.querySelector('#resultx').value = fn * sn;
+		}else
+		if(ope ==='divi'){
+			document.querySelector('#opera').value = fn+" / "+sn;
+			document.querySelector('#resultx').value = fn / sn;
+		}
+}); 
+//function to reload page
+function refresh(){
+location.reload(true);
+}
+</script>
+
+<body>
+
+<!-- HOME PAGE -->
+<div data-role="page" id="pageone" data-theme="a">
+
+	<div data-role="header">
+		<h1> Simple Calculator</h1>
+	</div> 
+	
+<div data-role="main" class="ui-content">
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#"  data-transition="flip" data-icon="home">HOME</a></li>
+			<li><a href="#pagetwo"  data-transition="flip" data-icon="grid">CALCULATOR</a></li>
+			<li><a href="#pagethree" data-transition="flip" data-icon="info">HELP</a></li>
+		</ul>
+	</div>
+		<p>This is a jQuery mobile exercise which provides the user with a calculator for basic mathematical operations.</p>
+</div>
+
+	<div data-role="footer">
+		<h2>Homework </h2>
+	</div> 
+	
+</div>
+
+<!-- CALCULATOR PAGE -->
+<div data-role="page" id="pagetwo" data-theme="a">
+
+	<div data-role="header">
+		<h1>Calculator</h1>
+	</div> <!-- /header 1 -->
+	
+<div data-role="main" class="ui-content">
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#pageone" data-transition="flip" data-icon="home">HOME</a></li>
+			<li><a href="#" data-transition="flip" data-icon="grid">CALCULATOR</a></li>
+			<li><a href="#pagethree" data-transition="flip" data-icon="info">HELP</a></li>
+		</ul>
+	</div>
+
+<!-- form --> 
+<form method="post" onload="">
+
+<input type="number" name="fnum" id="fnum" placeholder="Enter first number">
+
+<fieldset class="ui-field-contain">  
+		<select name="symbol" id="sym"> 
+			<option value="plus" id="plu">+</option> 
+			<option value="minus" id="minu">-</option> 
+			<option value="mult"id="mul">x</option>
+			<option value="divi"id="div">/</option>
+		</select> 
+</fieldset> 
+	
+	<input type="number" name="snum" id="snum" placeholder="Enter second number">
+
+    <a href="#pageres" data-transition="fade" class="ui-btn ui-icon-search ui-btn-icon-left">calculate</a>	
+	<a href="#"  onClick="refresh()" class="ui-btn ui-icon-back ui-btn-icon-left">Refresh</a>	
+
+</form>
+</div>
+
+
+		<div data-role="footer">
+			<h2>Homework </h2>
+		</div> 
+	
+</div>
+
+<!-- Result -->
+<div data-role="page" id="pageres" data-theme="a">
+
+	<div data-role="header">
+		<h1>Result</h1>
+	</div> 
+
+<div data-role="main" class="ui-content">
+	<div data-role="navbar">
+		<ul>
+			<li><a href="#pageone" data-transition="flip" data-icon="home">HOME</a></li>
+			<li><a href="#pagetwo" data-transition="flip" data-icon="grid">CALCULATOR</a></li>
+			<li><a href="#pagethree" data-icon="info">HELP</a></li>
+		</ul>
+	</div>
+	
+	<p>Operation: </p>
+		<input type="text" name="op" id="opera">
+	<p>Result: </p>
+		<input type="text" name="res" id="resultx">
+	<a href="#pagetwo" data-transition="slide" onClick="refresh" class="ui-btn ui-icon-back ui-btn-icon-left">Back</a>
+</div>
+
+	<div data-role="footer">
+		<h2>Homework </h2>
+	</div> 
+</div>
+
+<!-- HELP PAGE -->
+<div data-role="page" id="pagethree" data-theme="a">
+
+	<div data-role="header">
+		<h1> Help</h1>
+	</div>  
+	
+<div data-role="main" class="ui-content">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#pageone"  data-transition="flip" data-icon="home">HOME</a></li>
+				<li><a href="#pagetwo"  data-transition="flip" data-icon="grid">CALCULATOR</a></li>
+				<li><a href="#"  data-icon="info">HELP</a></li>
+			</ul>
+		</div>
+
+	<p>This is the help section and provides information on how to use the calculator.</p>
+	<a href="#pagefour" data-transition="slide" class="ui-btn ui-icon-info ui-btn-icon-left">more info</a>
+</div>
+
+	<div data-role="footer">
+		<h2>Homework </h2>
+	</div> 
+
+</div>
+
+
+
+<!--MORE INFO-->
+<div data-role="page" id="pagefour" data-theme="a">
+	<div data-role="header">
+		<h1 class="ui-icon-delete ui-btn-icon-left">More information.</h1>
+	</div>		
+<div data-role="main" class="ui-content">
+
+
+	<p>You have requested more information about the app!</p>
+	
+	<a href="#"  data-rel="back"  data-transition="slide" class="ui-btn ui-icon-back ui-btn-icon-left">Dismiss</a>
+		
+	</div>
+</div>
+
+</body>
+</html>
